@@ -40,22 +40,6 @@
     overflow: hidden;
   }
 
-  header::before {
-    content: '';
-    position: absolute;
-    top: -40px; right: -40px;
-    width: 220px; height: 220px;
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 50%;
-  }
-  header::after {
-    content: '';
-    position: absolute;
-    bottom: -60px; left: 60px;
-    width: 160px; height: 160px;
-    border: 1px solid rgba(255,255,255,0.06);
-    border-radius: 50%;
-  }
 
   .header-inner {
     max-width: 860px;
@@ -244,6 +228,34 @@
     font-weight: 500;
     font-size: 13px;
     margin-bottom: 2px;
+  }
+
+  a.rulebook-item {
+    background: var(--accent-light);
+    border-color: #a8c9b5;
+    text-decoration: none;
+    display: block;
+    transition: border-color 0.2s, transform 0.15s;
+  }
+
+  a.rulebook-item:hover {
+    border-color: var(--accent);
+    transform: translateY(-1px);
+  }
+
+  a.rulebook-item strong {
+    color: var(--accent);
+  }
+
+  a.rulebook-item .rulebook-online-badge {
+    display: inline-block;
+    font-size: 10px;
+    color: var(--accent);
+    border: 1px solid var(--accent-mid);
+    border-radius: 100px;
+    padding: 1px 6px;
+    margin-top: 4px;
+    letter-spacing: 0.05em;
   }
 
   /* ── WORKS ── */
@@ -438,10 +450,14 @@
       <div class="rulebook-item"><strong>アリアンロッド 2e</strong>①②</div>
       <div class="rulebook-item"><strong>カレコレTRPG</strong>基本ルルブ</div>
       <div class="rulebook-item"><strong>インセイン</strong>1・2・3</div>
-      <div class="rulebook-item"><strong>虚構侵蝕TRPG</strong>基本・アニメ・神話・シナリオ①</div>
+      <div class="rulebook-item"><strong>虚構侵蝕TRPG</strong>基本・アニメ・神話・シ集①</div>
       <div class="rulebook-item"><strong>フタリソウサ</strong></div>
       <div class="rulebook-item"><strong>ツクモツムギ</strong></div>
       <div class="rulebook-item"><strong>メタモルフォゼ</strong></div>
+      <a class="rulebook-item" href="https://emoklore.dicetous.com/" target="_blank" rel="noopener"><strong>エモクロア</strong>感情と怪異が絡み合う現代ホラーTRPG。全ルールが公式サイトで無料公開。<span class="rulebook-online-badge">ネット公開</span></a>
+      <a class="rulebook-item" href="https://www.aioniatrpg.com/" target="_blank" rel="noopener"><strong>慈悲なきアイオニア</strong>体の「傷痕」をステータス化したダークファンタジーTRPG。ルールブックは無料ダウンロード可。<span class="rulebook-online-badge">ネット公開</span></a>
+      <a class="rulebook-item" href="https://note.com/vorpal_notch/n/n0cf2005ea8be" target="_blank" rel="noopener"><strong>タクティカル祓魔師</strong>現代×戦術×祓魔をテーマにしたTRPG。ルールブックはnoteにて無料公開。<span class="rulebook-online-badge">ネット公開</span></a>
+      <a class="rulebook-item" href="http://sharedfantasia.com/" target="_blank" rel="noopener"><strong>Shared†Fantasia</strong>初心者にも遊びやすいハイファンタジーTRPG。基本ルールブックは無料公開。<span class="rulebook-online-badge">ネット公開</span></a>
     </div>
   </section>
 
@@ -532,14 +548,14 @@
           <span class="work-card-system">幻想ナラトグラフ</span>
         </a>
 
-        <a class="work-card" href="#" target="_blank" rel="noopener">
+        <div class="work-card">
           <p class="work-card-name">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
             インセイン キャラシ
           </p>
           <p class="work-card-desc">ココフォリア出力対応は未実装。<br>リンクなし。</p>
           <span class="work-card-system">インセイン</span>
-        </a>
+        </div>
 
         <a class="work-card" href="https://docs.google.com/spreadsheets/d/1El-hZLgHbdK2RMKAPinZBHuW2BbQBGy3gw7b8UhfhcQ/edit?usp=sharing" target="_blank" rel="noopener">
           <p class="work-card-name">
@@ -550,14 +566,14 @@
           <span class="work-card-system">ナツゾラ冒険団</span>
         </a>
 
-        <a class="work-card" href="#" target="_blank" rel="noopener">
+        <div class="work-card">
           <p class="work-card-name">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
             ダブルクロス キャラシ
           </p>
           <p class="work-card-desc">ゆとシートⅡ互換のインポート・エクスポート、ココフォリア出力にも対応。個人用のためリンクなし。</p>
           <span class="work-card-system">Double Cross 3rd</span>
-        </a>
+        </div>
 
         <a class="work-card" href="https://docs.google.com/spreadsheets/d/1jURX9GB-A8hUunZeARlsLHC_DrnBoBxCAracGI1Py74/edit?usp=sharing" target="_blank" rel="noopener">
           <p class="work-card-name">
