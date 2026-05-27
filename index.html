@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>美園ハジメ — TRPG Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600&family=Zen+Kaku+Gothic+New:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f7f4ef;
+    --surface: #ffffff;
+    --accent: #2d5a3d;
+    --accent-light: #e8f0eb;
+    --accent-mid: #4a7c5e;
+    --text: #2c2c2a;
+    --text-muted: #5f5e5a;
+    --text-faint: #9a9890;
+    --border: #d6d2cb;
+    --border-light: #e8e4de;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Zen Kaku Gothic New', sans-serif;
+    font-weight: 300;
+    line-height: 1.8;
+    min-height: 100vh;
+  }
+
+  /* ── HEADER ── */
+  header {
+    background: var(--accent);
+    padding: 3.5rem 2rem 3rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  header::before {
+    content: '';
+    position: absolute;
+    top: -40px; right: -40px;
+    width: 220px; height: 220px;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 50%;
+  }
+  header::after {
+    content: '';
+    position: absolute;
+    bottom: -60px; left: 60px;
+    width: 160px; height: 160px;
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 50%;
+  }
+
+  .header-inner {
+    max-width: 860px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .site-label {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    color: rgba(255,255,255,0.5);
+    text-transform: uppercase;
+    margin-bottom: 1.2rem;
+  }
+
+  .name {
+    font-family: 'Shippori Mincho', serif;
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: 600;
+    color: #fff;
+    letter-spacing: 0.04em;
+    line-height: 1.2;
+    margin-bottom: 0.6rem;
+  }
+
+  .handle {
+    font-size: 13px;
+    color: rgba(255,255,255,0.55);
+    letter-spacing: 0.06em;
+    margin-bottom: 1.6rem;
+  }
+
+  .tagline {
+    font-size: 14px;
+    color: rgba(255,255,255,0.75);
+    max-width: 480px;
+    line-height: 1.9;
+  }
+
+  /* ── NAV ── */
+  nav {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border-light);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .nav-inner {
+    max-width: 860px;
+    margin: 0 auto;
+    display: flex;
+    gap: 0;
+    padding: 0 2rem;
+  }
+
+  nav a {
+    display: block;
+    padding: 1rem 1.2rem;
+    font-size: 13px;
+    color: var(--text-muted);
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    border-bottom: 2px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+  }
+
+  nav a:hover {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+  }
+
+  /* ── MAIN ── */
+  main {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 2rem 4rem;
+  }
+
+  section {
+    padding-top: 3.5rem;
+  }
+
+  .section-label {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+
+  .section-title {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 2rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 1px solid var(--border-light);
+  }
+
+  /* ── ABOUT ── */
+  .about-intro {
+    font-size: 15px;
+    line-height: 2;
+    color: var(--text);
+    margin-bottom: 2rem;
+    max-width: 600px;
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1px;
+    background: var(--border-light);
+    border: 1px solid var(--border-light);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 2rem;
+  }
+
+  .about-block {
+    background: var(--surface);
+    padding: 1.25rem 1.5rem;
+  }
+
+  .about-block-title {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 0.8rem;
+    font-weight: 500;
+  }
+
+  .tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .tag {
+    display: inline-block;
+    background: var(--accent-light);
+    color: var(--accent);
+    font-size: 12px;
+    padding: 3px 10px;
+    border-radius: 100px;
+    font-weight: 400;
+  }
+
+  .tag.fav {
+    background: #f7f4ef;
+    color: var(--text-muted);
+    border: 1px solid var(--border);
+  }
+
+  .session-text {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.9;
+  }
+
+  /* ── RULEBOOK ── */
+  .rulebook-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 8px;
+    margin-top: 1rem;
+  }
+
+  .rulebook-item {
+    background: var(--surface);
+    border: 1px solid var(--border-light);
+    border-radius: 8px;
+    padding: 0.6rem 0.9rem;
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+
+  .rulebook-item strong {
+    display: block;
+    color: var(--text);
+    font-weight: 500;
+    font-size: 13px;
+    margin-bottom: 2px;
+  }
+
+  /* ── WORKS ── */
+  .works-category {
+    margin-bottom: 2.5rem;
+  }
+
+  .works-category-label {
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    color: var(--text-faint);
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    padding-left: 2px;
+  }
+
+  .works-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 12px;
+  }
+
+  .work-card {
+    background: var(--surface);
+    border: 1px solid var(--border-light);
+    border-radius: 12px;
+    padding: 1.1rem 1.3rem;
+    text-decoration: none;
+    display: block;
+    transition: border-color 0.2s, transform 0.15s;
+    position: relative;
+  }
+
+  .work-card:hover {
+    border-color: var(--accent-mid);
+    transform: translateY(-2px);
+  }
+
+  .work-card-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .work-card-name svg {
+    width: 14px;
+    height: 14px;
+    color: var(--accent);
+    flex-shrink: 0;
+    opacity: 0.7;
+  }
+
+  .work-card-desc {
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.75;
+  }
+
+  .work-card-system {
+    display: inline-block;
+    margin-top: 8px;
+    font-size: 11px;
+    color: var(--accent);
+    background: var(--accent-light);
+    padding: 2px 8px;
+    border-radius: 100px;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--accent);
+    padding: 2rem;
+    text-align: center;
+    margin-top: 2rem;
+  }
+
+  .footer-inner {
+    max-width: 860px;
+    margin: 0 auto;
+  }
+
+  footer p {
+    font-size: 12px;
+    color: rgba(255,255,255,0.4);
+    letter-spacing: 0.05em;
+  }
+
+  footer a {
+    color: rgba(255,255,255,0.65);
+    text-decoration: none;
+  }
+
+  footer a:hover {
+    color: #fff;
+  }
+
+  /* ── FADE IN ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .fade-up {
+    animation: fadeUp 0.5s ease both;
+  }
+
+  section { animation: fadeUp 0.5s ease both; }
+  section:nth-child(2) { animation-delay: 0.05s; }
+  section:nth-child(3) { animation-delay: 0.1s; }
+  section:nth-child(4) { animation-delay: 0.15s; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner fade-up">
+    <p class="site-label">TRPG Portfolio</p>
+    <h1 class="name">美園ハジメ</h1>
+    <p class="handle">@misono_siru</p>
+    <p class="tagline">TRPGプレイヤー。CoC・DX3rdを中心に、ツールやキャラクターシートをちょこちょこ作っています。</p>
+  </div>
+</header>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#about">About</a>
+    <a href="#works">Works</a>
+  </div>
+</nav>
+
+<main>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <p class="section-label">About</p>
+    <h2 class="section-title">自己紹介</h2>
+
+    <p class="about-intro">
+      美園ハジメです。TRPG歴は一年半ぐらいで、CoCを中心にDX3rdなどをやっています。
+      オンラインセッションが多く、Cocofolia をよく使います。
+    </p>
+
+    <div class="about-grid">
+      <div class="about-block">
+        <p class="about-block-title">Play Style</p>
+        <div class="tag-list">
+          <span class="tag">ボイセ</span>
+          <span class="tag">テキセ</span>
+          <span class="tag">半テキセ</span>
+          <span class="tag">オフセ</span>
+          <span class="tag">Discord</span>
+          <span class="tag">ココフォリア</span>
+        </div>
+      </div>
+
+      <div class="about-block">
+        <p class="about-block-title">Session</p>
+        <p class="session-text">
+          基本は 21:00〜 からの夜卓<br>
+          土・祝は 13:00〜18:00 からの昼卓も可<br>
+          時間は前後可能
+        </p>
+      </div>
+
+      <div class="about-block">
+        <p class="about-block-title">Favorites</p>
+        <div class="tag-list">
+          <span class="tag fav">秘匿HO</span>
+          <span class="tag fav">ホラー</span>
+          <span class="tag fav">コメディ</span>
+          <span class="tag fav">シティ・クローズド</span>
+          <span class="tag fav">高ロスト</span>
+          <span class="tag fav">推理・考察</span>
+          <span class="tag fav">ロールプレイ</span>
+          <span class="tag fav">友情</span>
+          <span class="tag fav">バディ</span>
+        </div>
+      </div>
+    </div>
+
+    <p class="about-block-title" style="margin-bottom: 0.8rem;">Rule Book</p>
+    <div class="rulebook-grid">
+      <div class="rulebook-item"><strong>クトゥルフ神話TRPG</strong>6版・MM・2010・2015・帝国・7版</div>
+      <div class="rulebook-item"><strong>ダブルクロス 3rd</strong>R1・R2・上級・EA・IC・IA・LM・HR・CRC・UA・DF・UG・PE・BC・RW</div>
+      <div class="rulebook-item"><strong>シノビガミ</strong></div>
+      <div class="rulebook-item"><strong>幻想ナラトグラフ</strong>基本・拡張</div>
+      <div class="rulebook-item"><strong>ソードワールド 2.5</strong>①②③</div>
+      <div class="rulebook-item"><strong>アリアンロッド 2e</strong>①②</div>
+      <div class="rulebook-item"><strong>カレコレTRPG</strong>基本ルルブ</div>
+      <div class="rulebook-item"><strong>インセイン</strong>1・2・3</div>
+      <div class="rulebook-item"><strong>虚構侵蝕TRPG</strong>基本・アニメ・神話・シナリオ①</div>
+      <div class="rulebook-item"><strong>フタリソウサ</strong></div>
+      <div class="rulebook-item"><strong>ツクモツムギ</strong></div>
+      <div class="rulebook-item"><strong>メタモルフォゼ</strong></div>
+    </div>
+  </section>
+
+  <!-- WORKS -->
+  <section id="works">
+    <p class="section-label">Works</p>
+    <h2 class="section-title">制作物</h2>
+
+    <div class="works-category">
+      <p class="works-category-label">Tools</p>
+      <div class="works-grid">
+
+        <a class="work-card" href="https://misosiru714.github.io/log-theater/" target="_blank" rel="noopener">
+          <p class="work-card-name">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><polyline points="13 2 13 9 20 9"/></svg>
+            ろぐしあたー
+          </p>
+          <p class="work-card-desc">Cocofolia のセッションログを読み込んで閲覧・編集できるビューアー。メモ・ブックマーク機能付き。</p>
+          <span class="work-card-system">ログ整形</span>
+        </a>
+
+        <a class="work-card" href="https://misosiru714.github.io/trpg-relation-maker/" target="_blank" rel="noopener">
+          <p class="work-card-name">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            TRPG相関図メーカー
+          </p>
+          <p class="work-card-desc">キャラクター同士の関係をビジュアルで整理できる相関図作成ツール。</p>
+          <span class="work-card-system">相関図</span>
+        </a>
+
+        <a class="work-card" href="https://misosiru714.github.io/tachie-resizer/" target="_blank" rel="noopener">
+          <p class="work-card-name">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+            立ち絵リサイザー
+          </p>
+          <p class="work-card-desc">ココフォリア用の立ち絵画像をまとめてリサイズ・変換できるツール。</p>
+          <span class="work-card-system">立ち絵</span>
+        </a>
+
+        <a class="work-card" href="https://misosiru714.github.io/DX3rd-Probability/" target="_blank" rel="noopener">
+          <p class="work-card-name">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            ダブクロ確率計算
+          </p>
+          <p class="work-card-desc">DX3rd のクリティカルした後の期待値などを計算する確率シミュレーター。元にした神なサイトがある。けど辺な挙動を起こしたから自分で作った。</p>
+          <span class="work-card-system">Double Cross 3rd</span><span class="work-card-system">DX3rd</span>
+        </a>
+
+        <a class="work-card" href="https://misosiru714.github.io/CoC-log-check/" target="_blank" rel="noopener">
+          <p class="work-card-name">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+            CoCログチェック
+          </p>
+          <p class="work-card-desc">ハウスルール対応のクトゥルフ神話TRPG セッションログ検証ツール。</p>
+          <span class="work-card-system">Call of Cthulhu</span>
+        </a>
+
+        <a class="work-card" href="https://misosiru714.github.io/moji-sozai-maker/" target="_blank" rel="noopener">
+          <p class="work-card-name">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg>
+            文字素材メイカー
+          </p>
+          <p class="work-card-desc">入力したテキストを PNG / JPG の画像素材として保存できるツール。多数のフォント・縁取り・影などに対応。</p>
+        </a>
+
+      </div>
+    </div>
+
+    <div class="works-category">
+      <p class="works-category-label">Character Sheets</p>
+      <div class="works-grid">
+
+        <a class="work-card" href="https://docs.google.com/spreadsheets/d/16-3gVF4OOv3-D5F3WR5MkOm0eyfNcKRfzFznr8Pjv7I/edit?usp=sharing" target="_blank" rel="noopener">
+          <p class="work-card-name">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            タクティカル祓魔師 キャラシ
+          </p>
+          <p class="work-card-desc">ココフォリア出力対応のキャラクターシート。</p>
+          <span class="work-card-system">タクティカル祓魔師</span>
+        </a>
+
+        <a class="work-card" href="https://docs.google.com/spreadsheets/d/1t8msJ2oE7hpPqmYDA4UnAR4trI5WIRe6cAhUyjANOTI/edit?usp=sharing" target="_blank" rel="noopener">
+          <p class="work-card-name">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            幻想ナラトグラフ キャラシ
+          </p>
+          <p class="work-card-desc">ココフォリア出力対応のキャラクターシート。</p>
+          <span class="work-card-system">幻想ナラトグラフ</span>
+        </a>
+
+        <a class="work-card" href="#" target="_blank" rel="noopener">
+          <p class="work-card-name">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            インセイン キャラシ
+          </p>
+          <p class="work-card-desc">ココフォリア出力対応を実はまだしていないやつ。<br>実質未完成なのでリンクなし。</p>
+          <span class="work-card-system">インセイン</span>
+        </a>
+
+        <a class="work-card" href="https://docs.google.com/spreadsheets/d/1El-hZLgHbdK2RMKAPinZBHuW2BbQBGy3gw7b8UhfhcQ/edit?usp=sharing" target="_blank" rel="noopener">
+          <p class="work-card-name">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            ナツゾラ冒険団 キャラシ
+          </p>
+          <p class="work-card-desc">ココフォリア 出力対応のキャラクターシート。</p>
+          <span class="work-card-system">ナツゾラ冒険団</span>
+        </a>
+
+        <a class="work-card" href="#" target="_blank" rel="noopener">
+          <p class="work-card-name">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            ダブルクロス キャラシ
+          </p>
+          <p class="work-card-desc">ゆとシートⅡ互換のインポート・エクスポート対応キャラクターシート。ココフォリア出力にも対応。なお機能がまんまなので個人的にキャラを保存用。リンクなし</p>
+          <span class="work-card-system">Double Cross 3rd</span><span class="work-card-system">DX3rd</span>
+        </a>
+
+        <a class="work-card" href="https://docs.google.com/spreadsheets/d/1jURX9GB-A8hUunZeARlsLHC_DrnBoBxCAracGI1Py74/edit?usp=sharing" target="_blank" rel="noopener">
+          <p class="work-card-name">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            シノビガミ キャラシ
+          </p>
+          <p class="work-card-desc">ココフォリア出力対応のキャラクターシート。<br>サイトの方のキャラシがすごい不安定な気がしたから、自身で保存・共有ができるようにとスプレットシートで作成。</p>
+          <span class="work-card-system">シノビガミ</span>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <p>© 美園ハジメ — <a href="https://twitter.com/misono_siru" target="_blank" rel="noopener">@misono_siru</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
