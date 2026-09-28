@@ -633,5 +633,21 @@
   </div>
 </footer>
 
+<script>
+  // 制作物カードのクリックをGA4イベントとして送信
+  document.addEventListener('click', function (e) {
+    var card = e.target.closest('a.work-card');
+    if (!card || typeof gtag !== 'function') return;
+    var nameEl = card.querySelector('.work-card-name');
+    var catEl = card.closest('.works-category');
+    var catLabel = catEl ? catEl.querySelector('.works-category-label') : null;
+    gtag('event', 'tool_open', {
+      tool_name: nameEl ? nameEl.textContent.replace(/\s+/g, ' ').trim() : '',
+      tool_category: catLabel ? catLabel.textContent.trim() : '',
+      link_url: card.href
+    });
+  });
+</script>
+
 </body>
 </html>
